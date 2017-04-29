@@ -1,0 +1,23 @@
+
+body
+{
+  background:rgb(183,214,230) url(index_base_bg.jpg) no-repeat;
+  background-attachment:fixed;
+  background-size:100%;
+}
+#center
+{
+  position:fixed;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+#center>h1
+{
+  font-size:100px;
+  text-shadow:1px 1px blanchedalmond,
+  2px 2px blanchedalmond;
+  color:azure;
+  opacity:0.8;
+}
+

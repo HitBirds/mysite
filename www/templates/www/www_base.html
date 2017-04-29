@@ -1,0 +1,20 @@
+<!--www_base.html-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load static %}
+    {% block selfstyle %}{% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+    {% block footer %}{% endblock %}
+</body>
+    {% block DOMScripts %}{% endblock %}
+</html>
+<!--end www_base.html-->
+

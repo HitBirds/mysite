@@ -1,0 +1,51 @@
+#fullbg
+{
+  display:none;
+  background-color:darkgray;
+  left:0px;
+  right:0px;
+  top:0px;
+  bottom:0px;
+  opacity:0.5;
+  position:fixed;
+  z-index:3;
+}
+
+#launch
+{
+  display:none;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  position:fixed;
+  z-index:5;
+}
+
+#launch>p
+{
+  margin-bottom:4px;
+  width:220px;
+}
+
+#launch>p>a
+{
+  color:#333;
+  cursor:pointer;
+  font-size:20px;
+  display:block;
+  width:190px;
+  padding:12px;
+  background-color:ghostwhite;
+  opacity:0.9;
+  text-align:center;
+  text-decoration:none;
+}
+
+#launch>p>a:hover
+{
+  color:white;
+  padding:11px;
+  border:white 1px solid;
+  background-color:darkorange;
+  opacity:1;
+}

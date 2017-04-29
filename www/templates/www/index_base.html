@@ -1,0 +1,28 @@
+<!--index_base.html-->
+
+{% extends "www/www_base.html" %}
+{% load static%}
+{% block selfstyle %}
+<title>GeekCUG</title>
+<link rel="stylesheet" href="{% static 'www/css/index_base.css' %}" />
+<link rel="stylesheet" href="{% static 'www/css/footer_plugin.css' %}">
+<link rel="stylesheet" href="{% static 'www/css/nav_plugin.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main>
+	<div id="center"><h1 id="welcome">Welcome</h1>
+	</div>		
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {% include "www/footer_plugin.html" %}
+{% endblock %}
+
+{% block DOMScripts %}
+<script src="{% static 'www/js/footer_plugin.js' %}"></script>
+<script src="{% static 'www/js/nav_plugin.js' %}"></script>
+{% endblock %}
+<!--end index_base.html-->
+
