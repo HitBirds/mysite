@@ -1,0 +1,53 @@
+<!-- articleList_base.html  -->
+{% extends "www/www_base.html" %}
+{% load static %}
+{% block selfstyle %}
+<title>GeekCUG - blog</title>
+<link rel="stylesheet" href="{% static 'www/css/articleList_base.css'  %}">
+<link rel="stylesheet" href="{% static 'www/css/filter_plugin.css' %}">
+<link rel="stylesheet" href="{% static 'www/css/footer_plugin.css' %}">
+<link rel="stylesheet" href="{% static 'www/css/nav_plugin.css' %}">
+{% endblock %}
+{% block content %}
+{% include 'www/filter_plugin.html' %}
+<div id="articleList">
+{% for o in articles %}
+  <div class="article">
+    <div class="date">
+      {{o.created|date:"Y/n/j"}}
+    </div>
+    <div class="content">
+    {% autoescape off %}
+      <h2><a>{{o.title}}</a></h2>
+      <p>{{o.abstract}}</p>
+    {% endautoescape %}
+    </div>
+  </div>
+{% endfor %}
+<nav>
+<ul class="pager">
+  <li class="current">{{articles.number}}/{{articles.paginator.num_pages}}</li>
+  {% if articles.has_previous %}
+  <li class="previous"><a href="{% url 'www:articleList' myfilter articles.previous_page_number %}"><span aria-hidden="true">&larr;</span>上一页</a></li>
+  {% else %}
+  <li class="previous disabled"><a href=""><span aria-hidden="true">&larr;</span>上一页</a></li>
+  {% endif %}
+  {% if articles.has_next %}
+  <li class="next"><a href="{% url 'www:articleList' myfilter articles.next_page_number %}">下一页<span aria-hidden="true">&rarr;</span></a></li>
+  {% else %}
+  <li class="next disabled"><a href="">下一页<span aria-hidden="true">&rarr;</span></a></li>
+  {% endif %}
+</ul>
+</nav>
+</div>
+
+{% endblock %}
+{% block footer %}
+{% include "www/footer_plugin.html" %}
+{% endblock %}
+{% block DOMScripts %}
+<script src="{% static 'www/js/footer_plugin.js' %}"></script>
+<script src="{% static 'www/js/nav_plugin.js' %}"></script>
+<script src="{% static 'www/js/filter_plugin.js' %}"></script>
+{% endblock %}
+<!-- end articleList_base.html -->

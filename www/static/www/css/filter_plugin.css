@@ -1,0 +1,53 @@
+#filter
+{
+  float:left;
+  border-top:4px solid black;
+  border-bottom:4px solid black;
+  padding:20px 0px 20px 0px;
+  margin-top:8px;
+  margin-left:10%;
+  width:70%;
+  background-color:ghostwhite;
+}
+
+#filter>li>a
+{
+  font-family:sans-serif;
+  float:left;
+  display:block;
+  margin:5px;
+  padding-left:8px;
+  padding-right:8px;
+  border-radius:16px;
+}
+
+.filterChoose
+{
+  color:white;
+  background-color:firebrick;
+}
+
+.filterUnChoose
+{
+  color:dimgray;
+  background-color:lightgray;
+}
+
+#filter>li>a:hover
+{
+  color:white;
+  background-color:indianred;
+}
+
+#filter>li
+{
+  list-style:none;
+  float:left;
+}
+
+#filter-head
+{
+  margin-left:20px;
+  margin-top:4px;
+  float:left;
+}

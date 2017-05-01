@@ -1,0 +1,43 @@
+body
+{
+   background:rgb(242,242,242) url(articleList_base_bg.png) no-repeat;
+   background-size:100%;
+   background-attachment:fixed;
+}
+
+a
+{
+  cursor:pointer;
+}
+
+#articleList
+{
+  width:70%;
+  height:100%;
+  margin-left:10%;
+  float:left;
+  border-top:4px solid black;
+}
+
+.article
+{
+  padding-left:4px;
+  padding-right:4px;
+  margin-top:12px;
+  background-color:ghostwhite;
+  border-bottom:2px solid black;
+  max-height:130px;
+  overflow:hidden;
+}
+
+.date
+{
+  float:left;
+  margin-top:20px;
+  margin-right:10px;
+}
+
+.content
+{
+  overflow:hidden;
+}

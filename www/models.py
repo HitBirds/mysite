@@ -5,9 +5,9 @@ from django.db import models
 
 
 class tb_tags(models.Model):
-    name=models.CharField(max_length=24,primary_key=True,verbose_name="分类")
+    name=models.CharField(max_length=24,verbose_name="分类")
     articlecount=models.PositiveIntegerField(verbose_name="同类文章数量")
-
+    id=models.PositiveIntegerField(primary_key=True,verbose_name="正则id")
 
 class tb_articles(models.Model):
     articleID=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False,verbose_name="文章ID")
@@ -15,7 +15,7 @@ class tb_articles(models.Model):
     content_md=models.TextField(verbose_name='Markdown内容')
     content_html=models.TextField(verbose_name='html内容')
     abstract=models.CharField(max_length=140,verbose_name='摘要')
-    tags=models.ForeignKey(tb_tags,on_delete=models.CASCADE)
+    tagID=models.ForeignKey(tb_tags,on_delete=models.CASCADE)
     created=models.DateTimeField(verbose_name='创建时间')
     updated=models.DateTimeField(verbose_name='更新时间')
     

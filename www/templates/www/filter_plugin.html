@@ -1,0 +1,10 @@
+<!-- filter_plugin.html -->
+{% load static %}
+<div id="filter">
+  <li id="filter-head">Filter:</li>
+  <li><a  href="{% url 'www:articleList' 0 1 %}">All</a></li>
+  {% for o in filters %}
+  <li><a href="{% url 'www:articleList' o.id 1 %}">{{o.name}}</a></li>
+  {% endfor %}
+</div>
+<!-- end filter_plugin.html -->
