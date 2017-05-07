@@ -4,6 +4,12 @@ from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from .models import *
 from django.db.models import F
 from django.views.generic import ListView
+
+from django.http import Http404
+from django.views.generic.detail import DetailView
+
+from .forms import ArticlePublishForm
+from django.views.generic.edit import FormView
 # Create your views here.
 def indexView(request):
     return render(request,'www/index_base.html',{})
@@ -33,3 +39,45 @@ class ArticleListView(ListView):
         context['myfilter']=self.kwargs.get('filter')
         context['filters']=tb_tags.objects.all()
         return context
+
+class ArticleDetailView(DetailView):
+    template_name="www/article_detail_base.html"
+    context_object_name="article"
+    
+    def get_object(self,**kwargs):
+        artId=self.kwargs.get('article')
+        try:
+            art=tb_articles.objects.get(articleID=artId)
+        except tb_articles.DoesNotExist:
+            raise Http404("Article does not exist")
+        return art
+
+    def get_context_data(self,**kwargs):
+        context=super(ArticleDetailView,self).get_context_data(**kwargs)
+        artId=self.kwargs.get('article')
+        artDate=tb_articles.objects.get(articleID=artId).created
+        context['comments']=tb_comments.objects.filter(articleID=artId).order_by(F('lefted').desc())
+        try:
+            context['nextID']=tb_articles.objects.raw('''
+                                          select articleID from www_tb_articles
+                                          where created < %s
+                                          order by created desc limit 1''',[artDate])[0].articleID
+        except:
+            context['nextID']="#"
+        try:
+            context['prevID']=tb_articles.objects.raw('''
+                                          select articleID from www_tb_articles
+                                          where created >%s
+                                          order by created asc limit 1''',[artDate])[0].articleID
+        except:
+            context['prevID']="#"
+        return context
+
+class ArticlePublishView(FormView):
+    template_name="www/article_publish_base.html"
+    form_class=ArticlePublishForm
+    success_url='blogs/0/1'
+    def form_valid(self,form):
+        form.save(self.request.user.username)
+        return super(ArticlePublishView,self).form_valid(form)
+    

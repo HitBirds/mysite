@@ -1,0 +1,24 @@
+<!-- article_detail_base.html -->
+{% extends "www/www_base.html" %}
+{% load static %}
+{% block content %}
+{{article.articleID}}
+{{article.title}}
+{{article.content_md}}
+{{article.content_html}}
+{{article.abstract}}
+{{article.tagID}}
+{{article.created}}
+{{article.updated}}
+{% for o in comments %}
+{{o.articleID}}
+{{o.commentID}}
+{{o.content}}
+{{o.IP}}
+{{o.lefted}}
+{% endfor %}
+{{prevID}}
+{{nextID}}
+{% endblock %}
+<!-- end article_detail_base.html -->
+
