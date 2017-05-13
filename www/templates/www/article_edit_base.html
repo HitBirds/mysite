@@ -1,0 +1,19 @@
+<!-- article_edit_base.html -->
+{% extends "www/www_base.html" %}
+{% load static %}
+{% block selfstyle %}
+<title>modify</title>
+<link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
+<script src="http://lab.lepture.com/editor/editor.js"></script>
+<script src="http://lab.lepture.com/editor/marked.js"></script>
+{% endblock %}
+{% block content %}
+<div id="pub_article">
+	<form action="" method="post">{% csrf_token %}
+		{{ form.as_p}}
+		<input type="submit" value="Send message">
+	</form>
+</div>
+{% endblock %}
+<!-- end article_edit_base.html -->
+

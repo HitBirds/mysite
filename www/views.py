@@ -8,9 +8,13 @@ from django.views.generic import ListView
 from django.http import Http404
 from django.views.generic.detail import DetailView
 
-from .forms import ArticlePublishForm
+from .forms import *
 from django.views.generic.edit import FormView
+from django.core.urlresolvers import reverse
+
+from .auths import *
 # Create your views here.
+
 def indexView(request):
     return render(request,'www/index_base.html',{})
 
@@ -73,7 +77,7 @@ class ArticleDetailView(DetailView):
             context['prevID']="#"
         return context
 
-class ArticlePublishView(FormView):
+class ArticlePublishView(Staff_test,FormView):
     template_name="www/article_publish_base.html"
     form_class=ArticlePublishForm
     success_url='blogs/0/1'
@@ -81,3 +85,30 @@ class ArticlePublishView(FormView):
         form.save(self.request.user.username)
         return super(ArticlePublishView,self).form_valid(form)
     
+class ArticleEditView(FormView):
+    template_name="www/article_edit_base.html"
+    form_class=ArticleEditForm
+    article=None
+    def get_initial(self,**kwargs):
+        artID=self.kwargs.get('article')
+        try:
+            self.article=tb_articles.objects.get(articleID=artID)
+            initial={
+                'title':self.article.title,
+                'abstract':self.article.abstract,
+                'content_md':self.article.content_md,
+                'tagID':self.article.tagID,
+            }
+            return initial
+        except tb_article.DoesNotExist:
+            raise Http404("Article does not exist")
+    
+    def form_valid(self,form):
+        form.save(self.request.user.username,self.article)
+        return super(ArticleEditView,self).form_valid(form)
+
+    def get_success_url(self):
+        l_uuid=str(self.article.articleID).split('-')
+        s_uuid=''.join(l_uuid)
+        success_url=reverse('www:articleDetail',kwargs={'filter':0,'article':s_uuid})
+        return success_url
