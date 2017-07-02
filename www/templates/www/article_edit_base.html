@@ -6,14 +6,40 @@
 <link rel="stylesheet" href="http://lab.lepture.com/editor/editor.css" />
 <script src="http://lab.lepture.com/editor/editor.js"></script>
 <script src="http://lab.lepture.com/editor/marked.js"></script>
+<script type="text/javascript"  async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" href="{% static 'www/css/article_publish.css' %}"
 {% endblock %}
+
 {% block content %}
 <div id="pub_article">
-	<form action="" method="post">{% csrf_token %}
-		{{ form.as_p}}
-		<input type="submit" value="Send message">
-	</form>
+  <div id="pub_article">
+    <form action="" method="post">{% csrf_token %}
+       <p id="pTitle">
+       {{form.title}}
+       <input id="btnPublish" type="submit" value="发布">
+       </p>
+       <p id="pContent">
+        <label for="id_content_md">文章内容:</label>
+	{{form.content_md}}
+       </p>
+       <p id="pAbstract">
+        <label for="id_abstract">摘要:</label>
+ 	{{form.abstract}}
+       </p>
+       <p id="pTagID">
+        <label for="id_tagID">文章分类:</label>
+ 	{{form.tagID}}
+       </p>
+    </form>
+  </div>
 </div>
 {% endblock %}
+{% block DOMScripts %}
+<script>
+  var editor=new Editor();
+    editor.render();
+</script>
+{% endblock %}
+
 <!-- end article_edit_base.html -->
 

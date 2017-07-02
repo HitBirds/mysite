@@ -1,0 +1,9 @@
+<div id="theComments">
+{% for o in comments %}
+<div class="aComment">
+  <p>{{o.content}}</p>
+  <p class="ip">{{o.IP}}</p>
+  <p class="datetime">{{o.lefted}}</p>
+</div>
+{% endfor %}
+</div>

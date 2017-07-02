@@ -1,0 +1,22 @@
+#theComments
+{
+  width:858px;
+  overflow:hidden;
+  margin:20px auto 0 auto;
+  padding:10px 20px 20px 20px;
+  background:#F6F6F0;
+  border:15px solid #FFF;
+}
+.aComment
+{
+  background:#FFF;
+  padding:8px;
+  margin:20px 0 0 200px;
+  border-radius:8px;
+}
+
+.ip
+{
+  text-align:right;
+  padding:0 0 8px;
+}

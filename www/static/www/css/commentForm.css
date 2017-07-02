@@ -1,0 +1,32 @@
+#commentForm
+{ 
+  width: 858px;
+  overflow: hidden;
+  margin: 20px auto 0 auto;
+  padding: 10px 20px 20px 20px;
+  background: #F6F6F0;
+  border: 15px solid #FFF;
+}
+.commentForm span
+{
+  float: left;
+  width: 200px;
+  text-align: left;
+}
+.commentForm textarea
+{
+  font: 100% arial;
+  width: 650px;
+}
+#submit {
+  font: 100% arial;
+  border: 0;
+  width: 99px;
+  margin: 0 0 0 555px;
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer;
+  background: #3B3B3B;
+  color: #FFF;
+}
+

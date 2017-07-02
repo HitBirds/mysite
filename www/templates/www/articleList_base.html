@@ -18,7 +18,7 @@
     </div>
     <div class="content">
     {% autoescape off %}
-      <h2><a>{{o.title}}</a></h2>
+    <h2><a href="{% url 'www:articleDetail' myfilter o.articleID %}">{{o.title}}</a></h2>
       <p>{{o.abstract}}</p>
     {% endautoescape %}
     </div>

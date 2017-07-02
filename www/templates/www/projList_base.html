@@ -1,0 +1,50 @@
+<!-- projList_base.html -->
+{% extends "www/www_base.html" %}
+{% load static %}
+{% block selfstyle %}
+<title>GeekCUG - projects</title>
+<link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic|Roboto:400,300,700' rel='stylesheet' type='text/css'>
+<!-- Animate -->
+<link rel="stylesheet" href="{% static 'www/css/animate.css' %}">
+<!-- Icomoon -->
+<link rel="stylesheet" href="{% static 'www/css/icomoon.css' %}">
+<link rel="stylesheet" href="{% static 'www/css/projList.css' %}">
+<script src="{% static 'www/js/projList.js' %}"></script>
+{% endblock %}
+{% block content %}
+<header id="fh5co-header">
+<div class="container-fluid">
+<div class="row">
+<div class="col-lg-12 col-md-12 text-center">
+<h1 id="fh5co-logo"><a href="#">Project List</a>
+</h1>
+</div>
+</div>
+</header>
+{% for o in projs %}
+<div class="container-fluid">
+<div class="row fh5co-post-entry">
+<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+<figure>
+	<a href="{% url 'www:projDetail' o.projID %}"><img src="{% get_static_prefix %}{{o.imgsURL}}/{{o.projID}}_1.jpg"
+alt="{{p.title}}" class="img-responsive"></a>
+</figure>
+<span class="fh5co-meta"><a href={{o.gitURL}}>{{o.projID}} &amp; {{o.title}}</a></span>
+<h2 class="fh5co-article-title"><a href={{o.gitURL}}>{{o.abstract}}</a></h2>
+<span class="fh5co-meta fh5co-date">{{o.uploaded}}</span>
+</article>
+{% if forloop.counter|divisibleby:'4' == False and forloop.counter|divisibleby:'2' %}
+<div class="clearfix visible-xs-block"></div>
+{% endif %}
+{% if forloop.counter|divisibleby:'4' %}
+<div class="clearfix visible-xs-block"></div>
+{% endif %}
+{% endfor %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+{% block DOMScripts %}
+<script src="{% static 'www/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'www/js/projListMain.js' %}"></script>
+{% endblock %}
+<!-- end projList_base.html -->

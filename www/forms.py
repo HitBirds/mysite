@@ -1,6 +1,7 @@
 from django.forms import ModelForm,Textarea
-from .models import tb_articles
+from .models import tb_articles,tb_comments
 from django.utils.translation import ugettext_lazy as _
+from django import forms
 import datetime
 import re
 import markdown
@@ -67,4 +68,23 @@ class ArticleEditForm(ModelForm):
             )
         article.save()
 
+class CommentForm(ModelForm):
+    class Meta:
+        model=tb_comments
+        fields=['content']
+    def save(self,IP,articleID):
+        cd=self.cleaned_data
+        content=cd['content']
+        lefted=datetime.datetime.now()
+        comment=tb_comments(articleID=articleID,content=content,IP=IP,lefted=lefted)
+        comment.save()
 
+class ProjForm(forms.Form):
+    title=forms.CharField(max_length=24)
+    abstract=forms.CharField(max_length=140)
+    gitURL=forms.URLField()
+    img1=forms.ImageField()
+    img2=forms.ImageField()
+    img3=forms.ImageField()
+    img4=forms.ImageField()
+    img5=forms.ImageField()

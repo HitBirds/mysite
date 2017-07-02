@@ -1,10 +1,11 @@
 <!--nav_plugin.html-->
+{% load static %}
     <div id="fullbg" onclick="closeLaunch()"></div>
     <div id="launch">
-    <p><a>首页</a></p>
-    <p><a>博客列表</a></p>
-    <p><a>作品一览</a></p>
-    <p><a>GitHub</a></p>
+    <p><a href="{% url 'www:indexView' %}">首页</a></p>
+    <p><a href="{% url 'www:articleList' 0 1 %}">博客列表</a></p>
+    <p><a href="{% url 'www:projList' %}">作品一览</a></p>
+    <p><a href="https://www.github.com/HitBirds">GitHub</a></p>
     </div>
 <!--end nav_plugin.html-->
 

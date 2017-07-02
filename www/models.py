@@ -8,6 +8,9 @@ class tb_tags(models.Model):
     name=models.CharField(max_length=24,verbose_name="分类")
     articlecount=models.PositiveIntegerField(verbose_name="同类文章数量")
     id=models.PositiveIntegerField(primary_key=True,verbose_name="正则id")
+    
+    def __str__(self):
+        return str(self.name)
 
 class tb_articles(models.Model):
     articleID=models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False,verbose_name="文章ID")
@@ -20,7 +23,7 @@ class tb_articles(models.Model):
     updated=models.DateTimeField(verbose_name='更新时间')
     
     def __str__(self):
-        return str(self.articleID);
+        return str(self.articleID)
 
 class tb_comments(models.Model):
     articleID=models.ForeignKey(tb_articles,on_delete=models.CASCADE)

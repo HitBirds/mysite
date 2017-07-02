@@ -6,7 +6,7 @@ function setPosArtList()
 
 function getQueryString()
 {
-  var r=window.location.pathname.match(/blogs\/([0-9]+)\/([0-9]+)/);
+  var r=window.location.pathname.match(/blogs\/articleList\/([0-9]+)\/([0-9]+)/);
   return parseInt(r[1]);
 }
 

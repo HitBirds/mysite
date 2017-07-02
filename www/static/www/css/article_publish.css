@@ -1,0 +1,30 @@
+#pTitle
+{
+   margin:20px 40px 20px 40px;
+   text-align:center;
+   line-height:50px;
+}
+#id_title
+{
+  width:73%;
+  height:50px;
+  text-align:center;
+  font-size:45px;
+  vertical-align:middle;
+}
+#btnPublish
+{
+  border:0px;
+  width:120px;
+  height:50px;
+  font-size:30px;
+  vertical-align:middle;
+}
+#id_content_md
+{
+  display:none;
+}
+#id_abstract
+{
+  width:100%;
+}

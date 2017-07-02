@@ -1,9 +1,10 @@
-
-body
+#bg
 {
+  height:1080px;
   background:rgb(183,214,230) url(index_base_bg.jpg) no-repeat;
+  background-position:50% 50%;
   background-attachment:fixed;
-  background-size:100%;
+
 }
 #center
 {
@@ -14,6 +15,7 @@ body
 }
 #center>h1
 {
+  text-align:center;
   font-size:100px;
   text-shadow:1px 1px blanchedalmond,
   2px 2px blanchedalmond;

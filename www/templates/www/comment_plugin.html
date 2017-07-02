@@ -1,0 +1,17 @@
+<div id="commentForm">
+  <form action="{% url 'www:commentPost' article.articleID %}"
+	  method="post" class="commentForm">{% csrf_token %}
+    <div class="form_settings">
+      <p>
+        <span>Comment:</span>
+ 	<textarea rows="8" cols="50" name="content"></textarea>
+      </p>
+      <p>
+	<span>&nbsp;</span>
+        <input name="submit" type="submit" id="submit" tabindex="5"
+ 	value="Submit" class="button">
+      </p>
+    </div>
+  </form>
+</div>  
+

@@ -1,24 +1,71 @@
 <!-- article_detail_base.html -->
-{% extends "www/www_base.html" %}
 {% load static %}
-{% block content %}
-{{article.articleID}}
-{{article.title}}
-{{article.content_md}}
-{{article.content_html}}
-{{article.abstract}}
-{{article.tagID}}
-{{article.created}}
-{{article.updated}}
-{% for o in comments %}
-{{o.articleID}}
-{{o.commentID}}
-{{o.content}}
-{{o.IP}}
-{{o.lefted}}
-{% endfor %}
-{{prevID}}
-{{nextID}}
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{article.title}}</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'www/css/articleDetail_base.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'www/css/commentForm.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'www/css/articleComments.css' %}">
+</head>
+<body>
+<div id="main">
+  <div id="header">
+    <div id="logo">
+      <div id="logo_text">
+        <!-- class="logo_colour", allows you to change the colour of the text -->
+	<h1><a href="{% url 'www:indexView' %}">Geek<span class="logo_colour">CUG</span></a></h1>
+	<h2>Studio. AI. BI.</h2>
+      </div>
+    </div>
+    <div id="menubar">
+      <ul id="menu">
+	<li><a href="{% url 'www:indexView'%}">Home</a></li>
+	<li><a href="{% url 'www:articleList' 0 1 %}">Articles</a></li>
+	<li><a href="{% url 'www:projList' %}">Projs</a></li>
+	<li><a href="https://www.github.com/HitBirds">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="site_content">
+    <div class="sidebar">
+      <h1>Useful Links</h1>
+      <ul>
+	{% if prevID != "#" %}
+	<li><a href="{% url 'www:articleDetail' 0 prevID %}">上一篇: {{ prevTitle }}</a></li>
+	{% else %}
+	<li><a href="#">上一篇: {{ prevTitle }}</a></li>
+	{% endif %}
+	{% if nextID != "#" %}
+	<li><a href="{% url 'www:articleDetail' 0 nextID %}">下一篇: {{ nextTitle }}</a></li>
+        {% else %}
+	<li><a href="#">下一篇: {{ nextTitle }}</a></li>
+	{% endif %}
+      </ul>
+    </div>
+    <div id="content">
+      <h1>{{article.title}}</h1>
+      {% autoescape off %}
+      {{article.content_html}}
+      {% endautoescape %}
+      <p class="datetime">updated: {{article.updated}}</p>
+      <p class="datetime">created: {{article.created}}</p>
+      {% if user.is_staff %}
+      <p class="datetime"><a href="{% url 'www:articleEdit' artId  %}">编辑</a> | <a href="{% url 'www:articlePublish' %}">新增</a>
+      {% endif %}
+    </div>
+  </div>
+  {% include "www/comment_plugin.html" %}
+  {% include "www/articleComments.html" %}
+  <div id="footer">
+    <p>
+    <a href="{% url 'www:indexView' %}">Home</a> | <a href="{% url 'www:articleList' 0 1 %}">Articles</a> | <a href="{% url 'www:projList' %}">Projs</a> | <a href="https://www.github.com/HitBirds">GitHub</a>
+    </p>
+    <p>Copyright © GeekCUG</p>
+  </div>
+</div>
+</body>
+</html>
 <!-- end article_detail_base.html -->
 

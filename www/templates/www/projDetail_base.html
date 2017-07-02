@@ -1,0 +1,54 @@
+<!-- projDetail_base.html -->
+{% extends "www/www_base.html" %}
+{% load static %}
+{% block selfstyle %}
+<title>GeekCUG - projDetail</title>
+<link href="{% static 'www/css/pure-min.css' %}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'www/css/blue.css' %}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'www/css/grids.css' %}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'www/css/album.css' %}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'www/css/base.css' %}" rel="stylesheet" type="text/css" media="all">
+{% endblock %}
+{% block content %}
+<body class="trs-tags">
+<div class="header" id="header">
+<h1>{{project.title}}</h1>
+<h2>{{project.abstract}}</h2>	
+</div><div class="content">
+<div class="album" id="album">
+<div class="album-image-md" id="album-image-md">
+	<p class="album-image-bd"><img src="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_1.jpg" class="album-image" id="album-image" alt="相册图片" width="674" height="750" style="overflow: hidden; width: 674px; height: 750px; margin-left: -337px; margin-top: -375px;"></p>	  
+<p class="album-image-ft" id="album-image-ft">相册图片</p>
+<ul class="album-image-nav hide" id="album-image-nav">
+ <li class="album-image-nav-left-block" id="album-image-nav-left-block"><a href="#prev-image" class="album-image-btn-prev" id="album-image-btn-prev">‹</a></li>
+ <li class="album-image-nav-right-block" id="album-image-nav-right-block"><a href="#next-image" class="album-image-btn-next" id="album-image-btn-next">›</a></li>
+</ul>
+<p class="album-image-loading-overlay hide" id="album-image-loading-overlay"><img src="{% static 'www/css/loading.gif' %}" alt="loading..." width="100" height="100"></p>
+</div>
+<div class="album-carousel" id="album-carousel">
+<a href="#prev-group" class="album-carousel-btn-prev" id="album-carousel-btn-prev">‹</a>
+<div class="album-carousel-zone" id="album-carousel-zone">
+<ul class="album-carousel-list" id="album-carousel-list" style="width: 1760px;">
+	<li class="album-carousel-thumb"><a href="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_1.jpg"><img src="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_1.jpg" alt="相册图片（1）" width="230" height="144"></a></li>
+	<li class="album-carousel-thumb"><a href="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_2.jpg"><img src="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_2.jpg" alt="相册图片（2）" width="230" height="144"></a></li>
+	<li class="album-carousel-thumb"><a href="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_3.jpg"><img src="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_3.jpg" alt="相册图片（3）" width="230" height="144"></a></li>
+	<li class="album-carousel-thumb"><a href="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_4.jpg"><img src="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_4.jpg" alt="相册图片（4）" width="230" height="144"></a></li>
+	<li class="album-carousel-thumb"><a href="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_5.jpg"><img src="{% get_static_prefix %}{{project.imgsURL}}/{{project.projID}}_5.jpg" alt="相册图片（5）" width="230" height="144"></a></li>
+</ul>
+</div>
+<a href="#next-group" class="album-carousel-btn-next" id="album-carousel-btn-next">›</a>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{% static 'www/js/carousel.js' %}"></script>
+<script type="text/javascript" src="{% static 'www/js/album.js' %}"></script>
+<script type="text/javascript">
+var Album = new jQuery.Album();
+</script>
+</body>
+{% endblock %}
+{% block footer %}
+{% endblock %}
+{% block DOMScripts %}
+{% endblock %}
+<!-- end projDetail_base.html -->
